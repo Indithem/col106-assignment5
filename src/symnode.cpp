@@ -5,11 +5,11 @@
 //Write your code below this line
 
 SymNode::SymNode(){
-
+    
 }
 
 SymNode::SymNode(string k){
-
+    key=k;
 }
 
 SymNode* SymNode::LeftLeftRotation(){
@@ -29,5 +29,5 @@ SymNode* SymNode::RightLeftRotation(){
 }
 
 SymNode::~SymNode(){
-
+    delete left;delete right;key.clear();
 }
