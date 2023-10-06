@@ -5,13 +5,14 @@
 //Write your code below this line
 
 HeapNode::HeapNode(){
-
+    left=NULL;right=NULL;par=NULL;
 }
 
 HeapNode::HeapNode(int _val){
-
+    left=NULL;right=NULL;par=NULL;
+    val=_val;
 }
 
 HeapNode::~HeapNode(){
-  
+  delete left; delete right;
 }
