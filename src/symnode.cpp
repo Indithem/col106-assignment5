@@ -10,22 +10,23 @@ SymNode::SymNode(){
 
 SymNode::SymNode(string k){
     key=k;
+    left=NULL;right=NULL; height=0;
 }
 
 SymNode* SymNode::LeftLeftRotation(){
-
+    return NULL;
 }
 
 SymNode* SymNode::RightRightRotation(){
-
+    return NULL;
 }
 
 SymNode* SymNode::LeftRightRotation(){
-
+    return NULL;
 }
 
 SymNode* SymNode::RightLeftRotation(){
-
+    return NULL;
 }
 
 SymNode::~SymNode(){

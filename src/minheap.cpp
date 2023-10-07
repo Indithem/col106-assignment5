@@ -23,7 +23,7 @@ private:
             return;
         }
 
-        if (size==(capacity/4)){
+        if (size<(capacity/4)){
             capacity=(capacity/4);
             int*tmp = new int[capacity];
             for(int i=0;i<size;i++){tmp[i]=arr[i];}
@@ -119,3 +119,16 @@ void MinHeap::pop(){
 MinHeap::~MinHeap(){
     delete ((minheap*)root);
 }
+
+// #include<iostream>
+// int main(){
+//     MinHeap h;
+//     for (int i:{8,4,5,12,3}){
+//         h.push_heap(i);
+//     }
+//     for (int i:{1,2,3,4,5}){
+//         std::cout<<h.get_min()<<endl;
+//         h.pop();
+//     }
+    
+// }
