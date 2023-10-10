@@ -40,7 +40,7 @@ void EPPCompiler::compile(vector<vector<string>> code){
             if(del_loc>=0){least_mem_loc.push_heap(del_loc);}
             symtable->remove(varID);
         }
-
+        delete targ.expr_trees.back();
         targ.expr_trees.pop_back();
     }
 }
