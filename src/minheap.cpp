@@ -49,22 +49,19 @@ private:
 
     void bubble_down(){
         int current=0;
-        int child,tmp;
+        int lchild,rchild,tmp,replacable;
 
         while (current<size){
-            child = LChild(current);
-            if (child<size and arr[child]<arr[current]){
-                tmp=arr[current];arr[current]=arr[child];arr[child]=tmp;
-                current=child;
-                continue;
-            }
-            child = RChild(current);
-            if (child<size and arr[child]<arr[current]){
-                tmp=arr[current];arr[current]=arr[child];arr[child]=tmp;
-                current=child;
-                continue;
-            }
-            return;
+            lchild = LChild(current);
+            rchild = RChild(current);
+            replacable=current;
+            if(lchild<size and arr[lchild]<arr[replacable]){replacable=lchild;}
+            if(rchild<size and arr[rchild]<arr[replacable]){replacable=rchild;}
+
+            if(replacable==current){return;}
+            tmp=arr[current];arr[current]=arr[replacable];arr[replacable]=tmp;
+
+            current=replacable;
         }
     }
 public:
@@ -121,15 +118,42 @@ MinHeap::~MinHeap(){
     delete ((minheap*)root);
 }
 
-// #include<iostream>
-// int main(){
+// #include <iostream>
+// #include <ctime>
+// #include <cstdlib>
+// #include <queue>
+// #include <cassert>
+// #define CASES 312312
+
+// int main() {
 //     MinHeap h;
-//     for (int i:{8,4,5,12,3}){
-//         h.push_heap(i);
+//     std::priority_queue<int, std::vector<int>, std::greater<int>> pq; // std::priority_queue as a reference
+
+//     // Seed the random number generator
+//     std::srand(static_cast<unsigned int>(std::time(nullptr)));
+
+//     // Test 7: Pushing and popping 50 random elements and comparing with std::priority_queue
+//     std::cout << "Test 7: Pushing and popping CASES random elements and comparing with std::priority_queue" << std::endl;
+//     for (int i = 0; i < CASES; ++i) {
+//         int random_value = std::rand(); // Generate a random integer between 0 and 99
+//         h.push_heap(random_value);
+//         pq.push(random_value);
 //     }
-//     for (int i:{1,2,3,4,5}){
-//         std::cout<<h.get_min()<<endl;
+
+//     for (int i = 0; i < CASES; ++i) {
+//         int min_value_h = h.get_min();
+//         int min_value_pq = pq.top();
+//         std::cout << "Popped from MinHeap: " << min_value_h << " | Popped from std::priority_queue: " << min_value_pq << std::endl;
+        
+//         // Error checking: Ensure that the popped value from MinHeap matches the top value from std::priority_queue
+//         assert(min_value_h == min_value_pq);
+        
+
 //         h.pop();
+//         pq.pop();
 //     }
-    
+
+//     std::cout << "All checks passed!" << std::endl;
+
+//     return 0;
 // }
