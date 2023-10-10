@@ -10,7 +10,7 @@
                 "${workspaceFolder}/tests/linker/linux/tester_dep.o",
                 "${workspaceFolder}/src/*",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}",
+                "${workspaceFolder}/bin/a",
                 "-I${workspaceFolder}/include",
             ],
             "options": {
