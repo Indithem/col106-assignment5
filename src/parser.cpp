@@ -129,9 +129,9 @@ Parser::~Parser(){
     delete symtable;
 }
 
-#include<iostream>
-int main(){
-    Parser p;
-    vector<string> vec={"del",":=","c","(","2",")","+","(","3","/","5",")"};
-    p.parse(vec);
-}
+// #include<iostream>
+// int main(){
+//     Parser p;
+//     vector<string> vec={"del",":=","c","(","2",")","+","(","3","/","5",")"};
+//     p.parse(vec);
+// }
