@@ -36,7 +36,7 @@ int SymbolTable::search(string k){
         if(current->key>k){current=current->left;continue;}
         current=current->right;
     }
-    if(current==NULL){return -1;}
+    if(current==NULL){return -2;}
     return current->address;
 }
 

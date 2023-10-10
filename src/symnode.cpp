@@ -4,6 +4,15 @@
 
 //Write your code below this line
 
+inline int calc_height(SymNode* A){
+    if (A->left==NULL){return A->right!=NULL;}
+    if (A->right==NULL){return -(A->left!=NULL);}
+    int l=A->left->height;
+    int r=A->right->height;
+    if (l!=0 or r!=0){return (r!=0)-(l!=0);}
+    
+}
+
 SymNode::SymNode(){
     
 }
@@ -14,6 +23,7 @@ SymNode::SymNode(string k){
 }
 
 SymNode* SymNode::LeftLeftRotation(){
+    
     return NULL;
 }
 
@@ -30,5 +40,5 @@ SymNode* SymNode::RightLeftRotation(){
 }
 
 SymNode::~SymNode(){
-    delete left;delete right;key.clear();
+    key.clear();delete left;delete right;
 }

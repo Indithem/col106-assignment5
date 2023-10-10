@@ -105,7 +105,7 @@ MinHeap::MinHeap(){
 }
 
 void MinHeap::push_heap(int num){
-    if (num<0){delete ((minheap*)root);root= (HeapNode*) new minheap(-num);return;}
+    if (num<0){delete ((minheap*)root);root= (HeapNode*) new minheap{-num};return;}
     return ((minheap*)root)->push_heap(num);
 }
 
