@@ -1,0 +1,10 @@
+
+PUSH 2
+PUSH 1
+ADD
+mem[0] = POP
+PUSH 2
+PUSH 1
+ADD
+mem[1] = POP
+DEL = mem[1]
