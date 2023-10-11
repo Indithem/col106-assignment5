@@ -11,7 +11,9 @@
 EPPCompiler::EPPCompiler(string out_file,int mem_limit){
     output_file=out_file;
     memory_size=mem_limit;
-    least_mem_loc.push_heap(-mem_limit);
+    // least_mem_loc.push_heap(-mem_limit);
+    mem_loc.reserve(mem_limit);
+    for(int i=0;i<mem_limit;i++){mem_loc.push_back(i);}
 }
 
 void EPPCompiler::compile(vector<vector<string>> code){
@@ -29,16 +31,16 @@ void EPPCompiler::compile(vector<vector<string>> code){
             varID=targ.expr_trees.back()->left->id;
             if (symtable->search(varID)==-2){
                 symtable->insert(varID);
-                symtable->assign_address(varID,least_mem_loc.get_min());least_mem_loc.pop();
+                symtable->assign_address(varID,mem_loc.back());mem_loc.pop_back();
             }
         }
 
         write_to_file(generate_targ_commands());
-        
+
         if (targ.expr_trees.back()->left->type=="DEL"){
             varID=targ.expr_trees.back()->right->id;
             del_loc=symtable->search(varID);
-            if(del_loc>=0){least_mem_loc.push_heap(del_loc);}
+            if(del_loc>=0){mem_loc.push_back(del_loc);}
             symtable->remove(varID);
         }
         delete targ.expr_trees.back();
