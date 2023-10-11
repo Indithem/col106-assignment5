@@ -34,6 +34,7 @@ void EPPCompiler::compile(vector<vector<string>> code){
         }
 
         write_to_file(generate_targ_commands());
+        
         if (targ.expr_trees.back()->left->type=="DEL"){
             varID=targ.expr_trees.back()->right->id;
             del_loc=symtable->search(varID);
