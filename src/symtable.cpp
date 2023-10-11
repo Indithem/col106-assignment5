@@ -25,9 +25,9 @@ SymbolTable::SymbolTable(){
     size=0;root=NULL;
 }
 
-void inline balance_till_root(SymNode* start,SymNode* &root){
-    SymNode* current = start; int balfac,bf2; bool change_root=false;
-    while(start!=NULL){
+void inline balance_till_root(SymNode* current,SymNode* &root){
+    int balfac,bf2; bool change_root=false;
+    while(current!=NULL){
         change_root= current==root;
 
         current->height=get_height(current);
@@ -176,10 +176,10 @@ SymbolTable::~SymbolTable(){
 // int main(){
 //     SymbolTable avl;
 
-//     for (char c: "123456"){
+//     for (char c: {'a','b','c','e','d'}){
 //         avl.insert(string{c});
 //     }
-//     for (char c: "356124"){
+//     for (char c: "abced"){
 //         avl.remove(string{c});
 //     }
 // }

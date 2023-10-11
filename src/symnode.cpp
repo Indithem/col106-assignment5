@@ -78,6 +78,10 @@ SymNode* SymNode::LeftRightRotation(){
         else{parent->right=C;}
     }
 
+    B->height=get_height(B);
+    this->height=get_height(this);
+    C->height=get_height(C);
+
     return C;
 }
 
@@ -99,6 +103,10 @@ SymNode* SymNode::RightLeftRotation(){
         if(onleft(parent,this)){parent->left=C;}
         else{parent->right=C;}
     }
+
+    B->height=get_height(B);
+    this->height=get_height(this);
+    C->height=get_height(C);
 
     return C;
 }
