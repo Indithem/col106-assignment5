@@ -27,7 +27,7 @@ SymbolTable::SymbolTable(){
 
 void inline balance_till_root(SymNode* start,SymNode* &root){
     SymNode* current = start; int balfac,bf2; bool change_root=false;
-    while(true){
+    while(start!=NULL){
         change_root= current==root;
 
         current->height=get_height(current);
@@ -93,7 +93,8 @@ void SymbolTable::remove(string k){
     case 2:
         if(node_on_left){parent->left=node->left;}
         else{parent->right=node->left;}
-        if(node==root){root=node->right;parent=NULL;}
+        if(node==root){root=node->left;parent=NULL;}
+        node->left->par=parent;
         node->left=NULL;node->right=NULL;
         delete node;
         size--;
@@ -101,7 +102,8 @@ void SymbolTable::remove(string k){
     case 1:
         if(node_on_left){parent->left=node->right;}
         else{parent->right=node->right;}
-        if(node==root){root=node->right;}
+        if(node==root){root=node->right;parent=NULL;}
+        node->right->par=parent;
         node->right=NULL;node->left=NULL;
         delete node;
         size--;
@@ -123,13 +125,15 @@ void SymbolTable::remove(string k){
         replacable->left=node->left;node->left->par=replacable;
 
         if(replacable_parent!=node){
-            replacable_parent->left=replacable->right;replacable->right->par=replacable_parent;
+            replacable_parent->left=replacable->right;if(replacable->right!=NULL){replacable->right->par=replacable_parent;}
             replacable->right=node->right;node->right->par=replacable;
         }
 
         node->left=NULL;node->right=NULL;
         delete node;
         size--;
+        if(replacable->left!=NULL){parent=replacable->left;}
+        else{parent=replacable;}
         break;
     }
 
@@ -168,14 +172,14 @@ SymbolTable::~SymbolTable(){
     delete root;
 }
 
-#include<iostream>
-int main(){
-    SymbolTable avl;
+// #include<iostream>
+// int main(){
+//     SymbolTable avl;
 
-    for (char c: "123456"){
-        avl.insert(string{c});
-    }
-    for (char c: "356124"){
-        avl.remove(string{c});
-    }
-}
+//     for (char c: "123456"){
+//         avl.insert(string{c});
+//     }
+//     for (char c: "356124"){
+//         avl.remove(string{c});
+//     }
+// }
